@@ -9,7 +9,7 @@
       target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
       if (target.length) {
         $('html, body').animate({
-          scrollTop: (target.offset().top - 48)
+          scrollTop: (target.offset().top - 40)
         }, 1000, "easeInOutExpo");
         return false;
       }
@@ -78,4 +78,30 @@
     }
   });
 
+  $('.portfolio-box').hover(function(){
+    var o = Math.round, r = Math.random, s = 255;
+    var color = 'rgba(' + o(r()*s) + ',' + o(r()*s) + ',' + o(r()*s) + ',' + '0.9' + ')';
+    $(this).children('.portfolio-box-caption').css({'background':color});
+  });
+
 })(jQuery); // End of use strict
+
+
+
+// When the user scrolls down 20px from the top of the document, show the button
+window.onscroll = function() {scrollFunction()};
+
+function scrollFunction() {
+  if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+      document.getElementById("goTopBtn").style.display = "block";
+  } else {
+      document.getElementById("goTopBtn").style.display = "none";
+  }
+}
+
+// When the user clicks on the button, scroll to the top of the document
+function topFunction() {
+  $('html, body').animate({
+    scrollTop: 0
+  }, 800)
+}
