@@ -24,7 +24,7 @@
   // Activate scrollspy to add active class to navbar items on scroll
   $('body').scrollspy({
     target: '#mainNav',
-    offset: 48
+    offset: 40
   });
 
   // Collapse the navbar when page is scrolled
@@ -86,22 +86,15 @@
 
 })(jQuery); // End of use strict
 
-
-
 // When the user scrolls down 20px from the top of the document, show the button
 window.onscroll = function() {scrollFunction()};
 
 function scrollFunction() {
   if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
-      document.getElementById("goTopBtn").style.display = "block";
+      document.getElementById("goTopBtn").style.opacity = 1;
+      // document.getElementById("goTopBtn").style.display = "block";
   } else {
-      document.getElementById("goTopBtn").style.display = "none";
+      document.getElementById("goTopBtn").style.opacity = 0;
+      // document.getElementById("goTopBtn").style.display = "none";
   }
-}
-
-// When the user clicks on the button, scroll to the top of the document
-function topFunction() {
-  $('html, body').animate({
-    scrollTop: 0
-  }, 800)
 }

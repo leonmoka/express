@@ -60,66 +60,66 @@ var mfp, // As we have only one instance of MagnificPopup object, we define it l
 var _mfpOn = function(name, f) {
 		mfp.ev.on(NS + name + EVENT_NS, f);
 	},
-	_getEl = function(className, appendTo, html, raw) {
-		var el = document.createElement('div');
-		el.className = 'mfp-'+className;
-		if(html) {
-			el.innerHTML = html;
+_getEl = function(className, appendTo, html, raw) {
+	var el = document.createElement('div');
+	el.className = 'mfp-'+className;
+	if(html) {
+		el.innerHTML = html;
+	}
+	if(!raw) {
+		el = $(el);
+		if(appendTo) {
+			el.appendTo(appendTo);
 		}
-		if(!raw) {
-			el = $(el);
-			if(appendTo) {
-				el.appendTo(appendTo);
-			}
-		} else if(appendTo) {
-			appendTo.appendChild(el);
-		}
-		return el;
-	},
-	_mfpTrigger = function(e, data) {
-		mfp.ev.triggerHandler(NS + e, data);
+	} else if(appendTo) {
+		appendTo.appendChild(el);
+	}
+	return el;
+},
+_mfpTrigger = function(e, data) {
+	mfp.ev.triggerHandler(NS + e, data);
 
-		if(mfp.st.callbacks) {
-			// converts "mfpEventName" to "eventName" callback and triggers it if it's present
-			e = e.charAt(0).toLowerCase() + e.slice(1);
-			if(mfp.st.callbacks[e]) {
-				mfp.st.callbacks[e].apply(mfp, $.isArray(data) ? data : [data]);
-			}
+	if(mfp.st.callbacks) {
+		// converts "mfpEventName" to "eventName" callback and triggers it if it's present
+		e = e.charAt(0).toLowerCase() + e.slice(1);
+		if(mfp.st.callbacks[e]) {
+			mfp.st.callbacks[e].apply(mfp, $.isArray(data) ? data : [data]);
 		}
-	},
-	_getCloseBtn = function(type) {
-		if(type !== _currPopupType || !mfp.currTemplate.closeBtn) {
-			mfp.currTemplate.closeBtn = $( mfp.st.closeMarkup.replace('%title%', mfp.st.tClose ) );
-			_currPopupType = type;
-		}
-		return mfp.currTemplate.closeBtn;
-	},
-	// Initialize Magnific Popup only when called at least once
-	_checkInstance = function() {
-		if(!$.magnificPopup.instance) {
-			/*jshint -W020 */
-			mfp = new MagnificPopup();
-			mfp.init();
-			$.magnificPopup.instance = mfp;
-		}
-	},
-	// CSS transition detection, http://stackoverflow.com/questions/7264899/detect-css-transitions-using-javascript-and-without-modernizr
-	supportsTransitions = function() {
-		var s = document.createElement('p').style, // 's' for style. better to create an element if body yet to exist
-			v = ['ms','O','Moz','Webkit']; // 'v' for vendor
+	}
+},
+_getCloseBtn = function(type) {
+	if(type !== _currPopupType || !mfp.currTemplate.closeBtn) {
+		mfp.currTemplate.closeBtn = $( mfp.st.closeMarkup.replace('%title%', mfp.st.tClose ) );
+		_currPopupType = type;
+	}
+	return mfp.currTemplate.closeBtn;
+},
+// Initialize Magnific Popup only when called at least once
+_checkInstance = function() {
+	if(!$.magnificPopup.instance) {
+		/*jshint -W020 */
+		mfp = new MagnificPopup();
+		mfp.init();
+		$.magnificPopup.instance = mfp;
+	}
+},
+// CSS transition detection, http://stackoverflow.com/questions/7264899/detect-css-transitions-using-javascript-and-without-modernizr
+supportsTransitions = function() {
+	var s = document.createElement('p').style, // 's' for style. better to create an element if body yet to exist
+		v = ['ms','O','Moz','Webkit']; // 'v' for vendor
 
-		if( s['transition'] !== undefined ) {
-			return true; 
+	if( s['transition'] !== undefined ) {
+		return true; 
+	}
+		
+	while( v.length ) {
+		if( v.pop() + 'Transition' in s ) {
+			return true;
 		}
+	}
 			
-		while( v.length ) {
-			if( v.pop() + 'Transition' in s ) {
-				return true;
-			}
-		}
-				
-		return false;
-	};
+	return false;
+};
 
 
 
