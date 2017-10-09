@@ -24,7 +24,7 @@
   // Activate scrollspy to add active class to navbar items on scroll
   $('body').scrollspy({
     target: '#mainNav',
-    offset: 40
+    offset: 48
   });
 
   // Collapse the navbar when page is scrolled
@@ -98,3 +98,11 @@ function scrollFunction() {
       // document.getElementById("goTopBtn").style.display = "none";
   }
 }
+
+// Add class to item lang
+$(document).ready(function(){
+  if (document.cookie.split('i18n=').length > 1) {
+    var currentlang = document.cookie.split('i18n=')[1];
+    $('[data-lang=' + currentlang + '] > a').addClass('choosen');  
+  } 
+});

@@ -106,7 +106,8 @@ body {
     #mainNav .navbar-nav > li.nav-item > a.nav-link:hover {
       color: #4fd05f; }
     #mainNav .navbar-nav > li.nav-item > a.nav-link:focus.active,
-    #mainNav .navbar-nav > li.nav-item > a.nav-link.active {
+    #mainNav .navbar-nav > li.nav-item > a.nav-link.active,
+    #mainNav .navbar-nav > li.nav-item > a.nav-link.choosen {
       color: #4fd05f !important;
       background-color: transparent; }
       #mainNav .navbar-nav > li.nav-item > a.nav-link:focus.active:hover,
@@ -271,7 +272,7 @@ header.masthead {
 
 .text-primary {
   color: #4fd05f !important; 
-  text-shadow: 5px 5px 5px rgba(0, 0, 0, 0.1); }
+  text-shadow: 5px 5px 5px rgba(0, 0, 0, 0.15); }
 
 .no-gutter > [class*='col-'] {
   padding-right: 0;

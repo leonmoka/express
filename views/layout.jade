@@ -1,28 +1,10 @@
 doctype html
 html(lang='en')
+  // head tag
   include common/head
   body#page-top
     // Navigation
-    nav#mainNav.navbar.navbar-expand-lg.navbar-light.fixed-top
-      .container
-        a.navbar-brand.js-scroll-trigger(href='#page-top') #{i18n.__("BRAND_MOKA")}
-        button.navbar-toggler.navbar-toggler-right(type='button', data-toggle='collapse', data-target='#navbarResponsive', aria-controls='navbarResponsive', aria-expanded='false', aria-label='Toggle navigation')
-          span.navbar-toggler-icon
-        #navbarResponsive.collapse.navbar-collapse
-          ul.navbar-nav.ml-auto
-            li.nav-item
-              a.nav-link.js-scroll-trigger(href='#about') About
-            li.nav-item
-              a.nav-link.js-scroll-trigger(href='#services') Services
-            li.nav-item
-              a.nav-link.js-scroll-trigger(href='#portfolio') Portfolio
-            li.nav-item
-              a.nav-link.js-scroll-trigger(href='#contact') Contact
-            li.nav-item
-              a.nav-link(href='/it') IT
-            li.nav-item
-              a.nav-link(href='/en') EN
-
+    include common/nav
     header.masthead
       .header-content
         .header-content-inner
@@ -146,6 +128,8 @@ html(lang='en')
             p
               a(href='mailto:leonmoka@gmail.com') leonmoka@gmail.com
     
+    block content
+        
     a.fa.fa-arrow-up.js-scroll-trigger(href='#page-top' id='goTopBtn' title='Go to top')
 
     // Bootstrap core JavaScript
